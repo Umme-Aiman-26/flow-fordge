@@ -1,0 +1,197 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Inter:wght@300;400;500;600;700&display=swap');
+
+@layer base {
+  :root {
+    --background: 220 20% 97%;
+    --foreground: 220 20% 10%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 220 20% 10%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 20% 10%;
+
+    --primary: 217 91% 55%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 220 16% 92%;
+    --secondary-foreground: 220 20% 15%;
+
+    --muted: 220 14% 94%;
+    --muted-foreground: 220 10% 46%;
+
+    --accent: 185 70% 42%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 72% 55%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 220 14% 88%;
+    --input: 220 14% 88%;
+    --ring: 217 91% 55%;
+
+    --radius: 0.5rem;
+
+    /* Custom tokens */
+    --surface: 220 16% 96%;
+    --surface-foreground: 220 20% 10%;
+    --success: 152 60% 42%;
+    --success-foreground: 0 0% 100%;
+    --warning: 38 92% 50%;
+    --warning-foreground: 0 0% 100%;
+
+    /* Node type colors */
+    --node-trigger: 263 70% 58%;
+    --node-trigger-bg: 263 70% 96%;
+    --node-action: 217 91% 55%;
+    --node-action-bg: 217 91% 96%;
+    --node-condition: 38 92% 50%;
+    --node-condition-bg: 38 92% 96%;
+    --node-delay: 185 70% 42%;
+    --node-delay-bg: 185 70% 96%;
+    --node-output: 152 60% 42%;
+    --node-output-bg: 152 60% 96%;
+
+    /* Execution */
+    --executing: 185 90% 50%;
+    --executing-glow: 185 90% 50%;
+
+    --sidebar-background: 0 0% 100%;
+    --sidebar-foreground: 220 20% 15%;
+    --sidebar-primary: 217 91% 55%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 220 14% 94%;
+    --sidebar-accent-foreground: 220 20% 15%;
+    --sidebar-border: 220 14% 88%;
+    --sidebar-ring: 217 91% 55%;
+  }
+
+  .dark {
+    --background: 222 22% 8%;
+    --foreground: 215 20% 92%;
+
+    --card: 220 20% 12%;
+    --card-foreground: 215 20% 92%;
+
+    --popover: 220 20% 12%;
+    --popover-foreground: 215 20% 92%;
+
+    --primary: 217 91% 60%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 220 18% 18%;
+    --secondary-foreground: 215 20% 85%;
+
+    --muted: 220 16% 16%;
+    --muted-foreground: 215 14% 55%;
+
+    --accent: 185 70% 45%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 72% 50%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 220 16% 18%;
+    --input: 220 16% 18%;
+    --ring: 217 91% 60%;
+
+    --surface: 220 18% 11%;
+    --surface-foreground: 215 20% 85%;
+    --success: 152 55% 48%;
+    --success-foreground: 0 0% 100%;
+    --warning: 38 92% 55%;
+    --warning-foreground: 0 0% 100%;
+
+    --node-trigger: 263 70% 65%;
+    --node-trigger-bg: 263 40% 18%;
+    --node-action: 217 85% 65%;
+    --node-action-bg: 217 40% 18%;
+    --node-condition: 38 80% 55%;
+    --node-condition-bg: 38 40% 18%;
+    --node-delay: 185 65% 50%;
+    --node-delay-bg: 185 40% 16%;
+    --node-output: 152 55% 48%;
+    --node-output-bg: 152 40% 16%;
+
+    --executing: 185 90% 55%;
+    --executing-glow: 185 90% 55%;
+
+    --sidebar-background: 220 20% 10%;
+    --sidebar-foreground: 215 20% 85%;
+    --sidebar-primary: 217 91% 60%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 220 18% 16%;
+    --sidebar-accent-foreground: 215 20% 85%;
+    --sidebar-border: 220 16% 18%;
+    --sidebar-ring: 217 91% 60%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+
+  code, .font-mono {
+    font-family: 'JetBrains Mono', monospace;
+  }
+}
+
+/* React Flow overrides */
+.react-flow__node {
+  cursor: grab;
+}
+
+.react-flow__node:active {
+  cursor: grabbing;
+}
+
+.react-flow__edge-path {
+  stroke-width: 2;
+}
+
+.react-flow__background {
+  background-color: hsl(var(--background)) !important;
+}
+
+.react-flow__minimap {
+  border-radius: 0.5rem;
+  overflow: hidden;
+  border: 1px solid hsl(var(--border));
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 8px 2px hsl(var(--executing-glow) / 0.3);
+  }
+  50% {
+    box-shadow: 0 0 20px 6px hsl(var(--executing-glow) / 0.6);
+  }
+}
+
+.node-executing {
+  animation: pulse-glow 1.5s ease-in-out infinite;
+}
+
+@keyframes edge-flow {
+  from {
+    stroke-dashoffset: 24;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.edge-executing {
+  stroke-dasharray: 8 8;
+  animation: edge-flow 0.6s linear infinite;
+}
